@@ -10,9 +10,11 @@ module.exports = () => {
   return {
     mode: 'development',
     entry: {
-      main: './src/js/index.js',
+      main: [
+        './src/js/index.js',
+      ],
       install: './src/js/install.js'
-    },
+    }, 
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
@@ -20,14 +22,14 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'J.A.T.E'
+        title: 'J.A.T.E',
       }),
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'service-worker.js'
       }),
       new WebpackPwaManifest({
-        filename: 'manifest.js',
+        filename: 'manifest.json',
         name: 'Just Another Text Editor',
         short_name: 'J.A.T.E',
         description: 'Takes notes with JavaScript syntax highlighting!',
@@ -37,8 +39,9 @@ module.exports = () => {
         display: 'standalone',
         icons: [
           {
-            src: path.resolve(__dirname,'./src/images.logo.png'),
-            sizes: [512]
+            src: path.resolve(__dirname,'src/images/logo.png'),
+            sizes: [96,512],
+            destination:'assets/icons'
           }
         ]
       })
@@ -50,6 +53,10 @@ module.exports = () => {
         {
           test: /\.css$/i,
           use: ['style-loader','css-loader']
+        },
+        {
+          test: /\.(png|jpe?g|gif)$/i,
+          type: 'assets/resource'
         },
         {
           test: /\.m?js$/,
