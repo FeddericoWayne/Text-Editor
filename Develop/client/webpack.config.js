@@ -26,17 +26,18 @@ module.exports = () => {
       }),
       new InjectManifest({
         swSrc: './src-sw.js',
-        swDest: 'service-worker.js'
+        swDest: 'src-sw.js'
       }),
       new WebpackPwaManifest({
-        filename: 'manifest.json',
         name: 'Just Another Text Editor',
         short_name: 'J.A.T.E',
         description: 'Takes notes with JavaScript syntax highlighting!',
         background_color: '#225ca3',
         theme_color: '#225ca3',
-        orientation: 'portrait',
-        display: 'standalone',
+        fingerprints: false,
+        inject: true,
+        start_url: './',
+        publicPath: './',
         icons: [
           {
             src: path.resolve(__dirname,'src/images/logo.png'),
@@ -45,7 +46,6 @@ module.exports = () => {
           }
         ]
       })
-      
     ],
 
     module: {
