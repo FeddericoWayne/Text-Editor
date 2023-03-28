@@ -42,6 +42,8 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
 registerRoute(({ request }) => request.destination === 'image', imageCache);
 
+// TODO: figure out how to set up offlineFallback
+
 
 
 

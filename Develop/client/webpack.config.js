@@ -36,16 +36,19 @@ module.exports = () => {
         theme_color: '#225ca3',
         fingerprints: false,
         inject: true,
+        orientation: 'portrait',
+        display: 'standalone',
         start_url: './',
         publicPath: './',
         icons: [
           {
             src: path.resolve(__dirname,'src/images/logo.png'),
-            sizes: [96,512],
-            destination:'assets/icons'
+            sizes: [96,128,192,512],
+            purpose: 'any',
+            destination:'assets/icons',
           }
-        ]
-      })
+        ],
+      }),
     ],
 
     module: {
