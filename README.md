@@ -1,142 +1,90 @@
-# 19 Progressive Web Applications (PWA): Text Editor
+# Just Another Text Editor - "J.A.T.E" <img src="https://img.shields.io/badge/license-MIT-yellow?style=plastic">
 
-## Your Task
+  ## <a id="Description">Description</a> 
 
-As you have progressed through this course, you have put together a number of impressive projects that you can show off to potential employers. This project is no exception; in fact, it features some of the most impressive expressions of the concepts you have learned so far.
+  This is a PWA text editor that allows users to take notes of code snippets with JavaScript highlighting effect.
 
-Your task is to build a text editor that runs in the browser. The app will be a single-page application that meets the PWA criteria. Additionally, it will feature a number of data persistence techniques that serve as redundancy in case one of the options is not supported by the browser. The application will also function offline.
+  It utilizes webpack, workbox, and various plugins to optimize user experience, as well as Google Chrome's IndexedDB.
+  
+  Upon starting the app, an IndexedDB database is immediated created for use. A service worker is also registered and the page is pre-cached in case of network disruption. The assets required for the app are also then cached by the service worker. Whenever the user clicks off the main app display, their input is updated inside the IndexedDB so that when the page is refreshed, the saved data can be retrieved for display.
 
-To build this text editor, you will start with an existing application and implement methods for getting and storing data to an IndexedDB database. You will use a package called `idb`, which is a lightweight wrapper around the IndexedDB API. It features a number of methods that are useful for storing and retrieving data, and is used by companies like Google and Mozilla.
+  When the user clicks on the "Install" button on the top left corner of the PWA, the PWA is downloaded onto the user's local environment and is fully functional as a standalone app with its own caches, manifest, and service worker. 
 
-You will deploy this full-stack application to Heroku using the [Heroku Deployment Guide on The Full-Stack Blog](https://coding-boot-camp.github.io/full-stack/heroku/heroku-deployment-guide).
+  URL of the deployed PWA on Heroku:
 
-## User Story
+  URL of the GitHub repo: https://github.com/FeddericoWayne/Text-Editor
 
-```md
-AS A developer
-I WANT to create notes or code snippets with or without an internet connection
-SO THAT I can reliably retrieve them for later use
-```
 
-## Acceptance Criteria
+  PWA Manifest screenshot:
+  <img src="assets/screenshots/PWA-Manifest-screenshot.png">
 
-```md
-GIVEN a text editor web application
-WHEN I open my application in my editor
-THEN I should see a client server folder structure
-WHEN I run `npm run start` from the root directory
-THEN I find that my application should start up the backend and serve the client
-WHEN I run the text editor application from my terminal
-THEN I find that my JavaScript files have been bundled using webpack
-WHEN I run my webpack plugins
-THEN I find that I have a generated HTML file, service worker, and a manifest file
-WHEN I use next-gen JavaScript in my application
-THEN I find that the text editor still functions in the browser without errors
-WHEN I open the text editor
-THEN I find that IndexedDB has immediately created a database storage
-WHEN I enter content and subsequently click off of the DOM window
-THEN I find that the content in the text editor has been saved with IndexedDB
-WHEN I reopen the text editor after closing it
-THEN I find that the content in the text editor has been retrieved from our IndexedDB
-WHEN I click on the Install button
-THEN I download my web application as an icon on my desktop
-WHEN I load my web application
-THEN I should have a registered service worker using workbox
-WHEN I register a service worker
-THEN I should have my static assets pre cached upon loading along with subsequent pages and static assets
-WHEN I deploy to Heroku
-THEN I should have proper build scripts for a webpack application
-```
+  PWA Service Worker screenshot:
+  <img src="assets/screenshots/PWA-Service-Worker-screenshot.png">
 
-## Mock-Up
+  PWA Caching screenshot:
+  <img src="assets/screenshots/PWA-Precaching-screenshot.png">
 
-The following animation demonstrates the application functionality:
+  PWA IndexedDB screenshot:
+  <img src="assets/screenshots/PWA-IndexedDB-screenshot.png">
 
-![Demonstration of the finished Module 19 Challenge being used in the browser and then installed.](./Assets/00-demo.gif)
+  PWA Installation screenshot:
+  <img src="assets/screenshots/PWA-Installation-screenshot.png">
 
-The following image shows the application's `manifest.json` file:
+  PWA Successfully Installed screenshot:
+  <img src="assets/screenshots/PWA-Installed-screenshot.png">
 
-![Demonstration of the finished Module 19 Challenge with a manifest file in the browser.](./Assets/01-manifest.png)
 
-The following image shows the application's registered service worker:
+***
 
-![Demonstration of the finished Module 19 Challenge with a registered service worker in the browser.](./Assets/02-service-worker.png)
+  ## Table of Content
 
-The following image shows the application's IndexedDB storage:
+  ### [Description](#Description)
+  ### [Installation](#Installation)
+  ### [Usage](#Usage)
+  ### [License](#License)
+  ### [Contributing](#Contributing)
+  ### [Tests](#Tests)
+  ### [Questions](#Questions)
 
-![Demonstration of the finished Module 19 Challenge with a IndexedDB storage named 'jate' in the browser.](./Assets/03-idb-storage.png)
+***
 
-## Grading Requirements
+  ## <a id="Installation">Installation</a>
 
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
+  If you'd like to git clone it from the repo for personal use, remember to install all the necessary npm packages and then in the terminal run "npm run start" to initiate the server and the front end. Otherwise, you can install the App from the Heroku URL by clicking on the "Install" button, and the app will be intalled locally for your device.
+  
 
-This Challenge is graded based on the following criteria:
+***
 
-### Technical Acceptance Criteria: 40%
+  ## <a id="Usage">Usage</a>
 
-* Satisfies all of the above acceptance criteria plus the following:
+  This is a PWA for note taking. If you're entering notes in JavaScript format, it will be highlighted in JavaScript style!
 
-  * Uses IndexedDB to create an object store and includes both GET and PUT methods
+***
 
-  * The application works without an internet connection
+  ## <a id="License">License</a>
+  
+  This App is covered under the MIT license.
 
-  * Automatically saves content inside the text editor when the DOM window is unfocused
+  
+***
 
-  * Bundled with webpack
+  ## <a id="Contributing">Contributing</a>
 
-  * Create a service worker with workbox that Caches static assets
+  Please refer to the Question section of this README for my contact information if you'd like to contribute to this project!
 
-  * The application should use babel in order to use async / await
+***
 
-  * Application must have a generated `manifest.json` using the `WebpackPwaManifest` plug-in
+  ## <a id="Tests">Tests</a>
 
-  * Can be installed as a Progressive Web Application
+  N/A
+  
 
-### Deployment: 32%
+***
 
-* Application deployed to Heroku at live URL with build scripts
+  ## <a id="Questions">Questions</a>
 
-* Application loads with no errors
+  For more info on my work, please check out my GitHub page at: https://github.com/feddericowayne
+  
+  Should you have any further questions regarding this App, please don't hesitate to reach out to me via email at: <a href="mailto:jackiew1120@hotmail.com">jackiew1120@hotmail.com</a>
 
-* Application GitHub URL submitted
-
-* GitHub repo contains application code
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate
-
-* Application user interface style is clean and polished
-
-* Application resembles the mock-up functionality provided in the Challenge instructions
-
-### Repository Quality: 13%
-
-* Repository has a unique name
-
-* Repository follows best practices for file structure and naming conventions
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages
-
-* Repository contains quality README file with description, screenshot, and link to deployed application
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application
-
-* The URL of the GitHub repository, with a unique name and a README describing the project
-
-- - -
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+  
