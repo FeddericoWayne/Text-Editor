@@ -1,5 +1,6 @@
 import { openDB } from 'idb';
 
+// initiates the IndexedDB
 const initdb = async () =>
   openDB('jate', 1, {
     upgrade(db) {
@@ -12,7 +13,7 @@ const initdb = async () =>
     },
   });
 
-
+// exported function to add data to IndexedDB
 export const putDb = async (content) => {
 
   try {
@@ -31,7 +32,7 @@ export const putDb = async (content) => {
 
 };
 
-
+// exported function to retrieve all data from IndexedDB
 export const getDb = async () => {
 
   try {
@@ -50,4 +51,5 @@ export const getDb = async () => {
 
 };
 
+// calls the function that initiates the IndexedDB
 initdb();

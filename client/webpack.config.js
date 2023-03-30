@@ -1,3 +1,4 @@
+// imports required packges for webpack configuration
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
@@ -18,14 +19,17 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
+      // webpack plugin setting
       new HtmlWebpackPlugin({
         template: './index.html',
         title: 'J.A.T.E',
       }),
+      // injects service worker 
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'src-sw.js'
       }),
+      //sets up the PWA's manifest
       new WebpackPwaManifest({
         name: 'Just Another Text Editor',
         short_name: 'J.A.T.E',
@@ -51,6 +55,7 @@ module.exports = () => {
 
     module: {
       rules: [
+        // css and style loaders
         {
           test: /\.css$/i,
           use: ['style-loader','css-loader']
@@ -59,6 +64,7 @@ module.exports = () => {
           test: /\.(png|jpe?g|gif)$/i,
           type: 'assets/resource'
         },
+        // babel loader for backwards compatibility
         {
           test: /\.m?js$/,
           exclude: /(node_modules|bower_components)/,

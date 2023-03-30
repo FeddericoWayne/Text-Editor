@@ -1,7 +1,8 @@
-// Import methods to save and get data from the indexedDB database in './database.js'
+// Imports methods to save and get data from the indexedDB database in './database.js'
 import { getDb, putDb } from './database';
 import { header } from './header';
 
+// exports the class that handles the editor functionalities 
 export default class {
   constructor() {
     const localData = localStorage.getItem('content');
@@ -11,6 +12,7 @@ export default class {
       throw new Error('CodeMirror is not loaded');
     }
 
+    // configures CodeMirror settings
     this.editor = CodeMirror(document.querySelector('#main'), {
       value: '',
       mode: 'javascript',
@@ -29,6 +31,7 @@ export default class {
       this.editor.setValue(data || localData || header);
     });
 
+    // updates localstorage upon change events as data backup 
     this.editor.on('change', () => {
       localStorage.setItem('content', this.editor.getValue());
     });
