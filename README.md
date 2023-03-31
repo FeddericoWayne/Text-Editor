@@ -10,7 +10,7 @@
 
   When the user clicks on the "Install" button on the top left corner of the PWA, the PWA is downloaded onto the user's local environment and is fully functional as a standalone app with its own caches, manifest, and service worker. 
 
-  URL of the deployed PWA on Heroku:
+  URL of the deployed PWA on Heroku: https://freds-jate.herokuapp.com/
 
   URL of the GitHub repo: https://github.com/FeddericoWayne/Text-Editor
 
