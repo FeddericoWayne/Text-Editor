@@ -8,7 +8,7 @@ const initdb = async () =>
         console.log('jate database already exists');
         return;
       }
-      db.createObjectStore('jate', { keyPath: 'id', autoIncrement: true });
+      db.createObjectStore('jate', { keyPath: "id", autoIncrement: false});
       console.log('jate database created');
     },
   });
@@ -21,7 +21,7 @@ export const putDb = async (content) => {
     const jateDB = await openDB('jate',1);
     const tx = jateDB.transaction('jate','readwrite');
     const currentContent = tx.objectStore('jate');
-    const request = currentContent.add({content});
+    const request = currentContent.put({id:1,content:content});
     const res = await request;
 
     console.log('putDB implemented/notes updated',res);
@@ -40,10 +40,12 @@ export const getDb = async () => {
     const jateDB = await openDB('jate',1);
     const tx = jateDB.transaction('jate','readonly');
     const currentNotes = tx.objectStore('jate');
-    const request = currentNotes.getAll();
+    const request = currentNotes.get(1);
     const result = await request;
     
     console.log('getDB implemented/notes retrieved',result);
+    // if data is present, returns the content of result for editor.js to use
+    return result?.content;
 
   } catch(err) {
     console.error('getDb not implemented',err)
